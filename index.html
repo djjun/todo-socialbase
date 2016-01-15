@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR" ng-app="todo">
+<head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Todo List</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <meta name="description" content="Todo List for SocialBase exercise.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script src="js/vendors/jquery.min.js"></script>
+    <script src="js/vendors/bootstrap.min.js"></script>
+    <script src="js/vendors/angular.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers/controller.js"></script>
+    <script src="js/directives/alert-msg.js"></script>
+
+</head>
+<body ng-controller="listCtrl as ctrl">
+
+<div ng-include="'views/navbar.html'"></div>
+
+<section>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-xs-12 col-md-4 pull-right">
+                <div class="input-group pull-right">
+                    <input type="text" class="form-control" ng-model="search" placeholder="Procurar">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button"><span class="fa fa-search"></span></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!--TABLE-->
+        <div class="col-xs-12 mg20">
+            <div class="row border-rounded">
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th width="5%">
+                            <label>
+                            <input type="checkbox" ng-model="selectedAll">
+                            <i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i>
+                            </label>
+                        </th>
+                        <th class="pb15">Tarefa</th>
+                        <th width="20%" class="pb15">Criado</th>
+                        <th width="20%" class="text-center pb15">Opções</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in ctrl.list | filter:search">
+                            <th>
+                                <label class="mgt5" ng-click="ctrl.itemOk($index)">
+                                    <input type="checkbox" ng-checked="selectedAll">
+                                    <i class="fa fa-square-o fa-2x"></i><i class="fa fa-check-square-o fa-2x"></i>
+                                </label>
+                            </th>
+                            <td ng-bind="item.tarefa"></td>
+                            <td ng-bind="item.criado | date:'dd/MM/yyyy'"></td>
+                            <td class="text-center">
+                                <a href="#" class="btn btn-danger" ng-click="ctrl.rmItem(item.tarefa, $index)"><i class="fa fa-trash-o"></i></a>
+                                <a href="#" class="btn btn-success" ng-click="ctrl.edItem($index)"><i class="fa fa-pencil-square-o"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr ng-hide="ctrl.edit">
+                            <td></td>
+                            <td>
+                                <div class="input-group">
+                                    <input type="text" ng-model="ctrl.newItem" class="form-control" placeholder="Título da tarefa">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" ng-click="ctrl.addItem()"><i class="fa fa-plus"></i> Adicionar</button>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr ng-show="ctrl.edit">
+                            <td></td>
+                            <td>
+                                <div class="input-group">
+                                    <input type="text" ng-model="ctrl.editTarefa" class="form-control" placeholder="Título da tarefa">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" ng-click="ctrl.attItem(ctrl.editTarefa)">Atualizar</button>
+                                        <button class="btn btn-default" type="button" ng-click="ctrl.cancel()"><i class="fa fa-times"></i></button>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <!--/TABLE-->
+    </div>
+
+    <alert-msg visible="ctrl.showModal"></alert-msg>
+
+</section>
+
+</body>
+</html>

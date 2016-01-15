@@ -1,0 +1,86 @@
+body{
+    background-color: #F1F4F9;
+    font-family: Tahoma;
+    color: #436381;
+}
+/*NAVBAR*/
+.navbar-default {
+    background: #2687E9 none repeat scroll 0% 0%;
+    margin: 0px;
+    border: 0px none;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+}
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover {
+    font-size: 14px;
+    color: #FFF;
+}
+
+/*SECTION*/
+section{
+    padding-top: 70px;
+}
+
+/*SEARCH FORM*/
+.input-lg {
+    height: 44px;
+    border-radius: 4px;
+}
+.mg20{
+    margin: 20px 0;
+}
+.mgt5{
+    margin-top: 5px;
+}
+.pb15{
+    padding-bottom: 15px!important;
+}
+.table > tbody > tr > td{
+    line-height: 2.5;
+}
+
+
+/*TABLE*/
+table{
+    margin: 0!important;
+}
+.border-rounded{
+    border: solid 1px #C9D3DD!important;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 -15px;
+}
+thead{
+    background-color: #F8FAFC;
+}
+tbody tr{
+    background-color: #FFFFFF;
+}
+.table-hover > tbody > tr:hover {
+    background-color: #D8E9FB;
+    border:solid 1px #8BC8F6;
+}
+th > label{
+    margin-top: 5px;
+}
+label input[type="checkbox"]{
+    display: none;
+}
+label input[type="checkbox"] ~ i.fa.fa-square-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="checkbox"] ~ i.fa.fa-check-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
+    color: #7AA3CC;    display: inline;
+}
+label:hover input[type="checkbox"] ~ i.fa {
+    color: #7AA3CC;
+}
